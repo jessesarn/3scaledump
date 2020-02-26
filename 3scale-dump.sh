@@ -14,7 +14,8 @@ NOW=$(date +"%Y-%m-%d_%H-%M" -u)
 
 DUMP_DIR="${CURRENT_DIR}/3scale_dump-${NOW}"
 
-DUMP_FILE="${DUMP_DIR}.tar"
+# using hardcoded filename is safe now since all output files are now inside a new unique temp dir
+DUMP_FILE="3scale-dump.tar"
 
 
 #############
@@ -556,21 +557,22 @@ fi
 ((STEP++))
 
 
-# Secrets #
-
-STEP_DESC="Fetch: Secrets"
-print_step
-
-NEWDIR="secrets"
-SINGLE_FILE="secrets.yaml"
-COMMAND="oc get secret"
-
-create_dir
-execute_command
-read_obj
-cleanup
-
-((STEP++))
+# The block of lines commented with ### below have been removed for security concerns when 3scale dump is being run via rhmi_3scale_dump tiered access command
+### # Secrets #
+### 
+### STEP_DESC="Fetch: Secrets"
+### print_step
+### 
+### NEWDIR="secrets"
+### SINGLE_FILE="secrets.yaml"
+### COMMAND="oc get secret"
+### 
+### create_dir
+### execute_command
+### read_obj
+### cleanup
+### 
+### ((STEP++))
 
 
 # Routes #
