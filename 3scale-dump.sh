@@ -1199,7 +1199,7 @@ if [[ -f ${CURRENT_DIR}/3scale-dump-logs.txt ]]; then
     /bin/cp -f ${CURRENT_DIR}/3scale-dump-logs.txt ${DUMP_DIR}/3scale-dump-logs.txt
 fi
 
-tar cpf ${DUMP_FILE} --xform s:'./':: ${DUMP_DIR}
+tar cpf ${DUMP_FILE} ${DUMP_DIR}
 
 if [[ ! -f ${DUMP_FILE} ]]; then
     MSG="There was an error creating ${DUMP_FILE}"
